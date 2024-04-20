@@ -172,3 +172,64 @@ button:active {
 .ani_check_sig {
   width: 18rem;
 }
+@media (max-width: 350px) {
+  html {
+    font-size: 62.5%;
+  }
+  body {
+    box-sizing: border-box;
+    font-weight: 600;
+    font-size: 1.6rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .atbmtt {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+  }
+  .Part_1,
+  .Part_2,
+  .Part_3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  input {
+    width: 100%;
+  }
+  h2 {
+    width: 100%;
+    font-size: 1.6rem;
+  }
+  button {
+    font-size: 1.6rem;
+  }
+  .ani_check_sig {
+    display: flex;
+    justify-content: center;
+  }
+  .xg {
+    display: flex;
+    justify-content: center;
+  }
+  #check {
+    font-size: 1.8rem;
+    margin-top: 4rem;
+  }
+  .randomKey {
+    width: 12rem;
+  }
+  .randomKey:active {
+    width: 12.5rem;
+    height: 4.5rem;
+    font-size: 1rem;
+  }
+  .createKey {
+    width: 10rem;
+  }
+}
