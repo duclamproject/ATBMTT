@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Form</title>
+  </head>
+  <body>
+    <div class="atbmtt">
+      <div class="Part_1">
+        <h2>Tạo khóa</h2>
+        <div class="input">
+          <div class="soP">
+            <label>
+              <span>Số p:</span
+              ><input
+                type="number"
+                name="p"
+                id="so-p"
+                placeholder="Nhập vào số p"
+            /></label>
+          </div>
+          <div class="soA">
+            <label>
+              <span>Số a:</span
+              ><input
+                type="number"
+                name="a"
+                id="so-a"
+                placeholder="Nhập vào số a"
+            /></label>
+          </div>
+          <div class="soAlpha">
+            <label>
+              <span>Số alpha:</span
+              ><input
+                type="number"
+                name="alpha"
+                id="so-alpha"
+                placeholder="Nhập vào số alpha "
+              />
+            </label>
+          </div>
+        </div>
+
+        <div class="div_button tao_khoa">
+          <div class="createKey">
+            <button onclick="result()">Tạo khóa</button>
+          </div>
+          <div class="randomKey">
+            <button onclick="randomKey()">Random key</button>
+          </div>
+        </div>
+        <div class="beta"><p id="beta">Beta</p></div>
+        <div class="khoa">
+          <p id="k-pub">Public key</p>
+          <p id="k-pr">Private key</p>
+        </div>
+      </div>
+      <div class="Part_2">
+        <h2>Ký và đưa ra chữ ký</h2>
+        <div class="ky">
+          <label
+            ><span>Số x:</span
+            ><input
+              type="number"
+              name="ky-x"
+              id="so-x"
+              placeholder="Nhập vào số x"
+          /></label>
+          <label class="so_k_label"
+            ><span>Số k:</span
+            ><input
+              type="number"
+              name="ky-k"
+              id="so-k"
+              placeholder="Nhập vào số k"
+          /></label>
+        </div>
+        <div class="div_button gama_xicma_button">
+          <div class="xg">
+            <button onclick="gama_xicma()">Gama và Xicma</button>
+          </div>
+        </div>
+        <div class="gama_xicma">
+          <p id="gama">Gama</p>
+          <p id="xicma">Xicma</p>
+        </div>
+      </div>
+      <div class="Part_3">
+        <h2>kiểm tra chữ ký</h2>
+        <p id="check">Result</p>
+        <div class="check">
+          <div class="div_button div_button_check_sig">
+            <div class="ani_check_sig">
+              <button onclick="kiemTraChuKy()">Kiểm tra chữ ký</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- File JS -->
+    <script src="./script.js"></script>
+  </body>
+</html>
