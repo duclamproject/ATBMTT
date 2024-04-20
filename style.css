@@ -172,7 +172,7 @@ button:active {
 .ani_check_sig {
   width: 18rem;
 }
-@media (max-width: 350px) {
+@media (max-width: 550px) {
   html {
     font-size: 62.5%;
   }
