@@ -55,13 +55,22 @@
             <button onclick="result()">Tạo khóa</button>
           </div>
           <div class="randomKey">
-            <button onclick="randomKey()">Random key</button>
+            <button id="random" onclick="randomKey()">Random key</button>
           </div>
         </div>
-        <div class="beta"><p id="beta">Beta</p></div>
+        <div class="beta"><p id="beta">Beta: *********</p></div>
         <div class="khoa">
-          <p id="k-pub">Public key</p>
-          <p id="k-pr">Private key</p>
+          <p id="k-pub">Public key: *********</p>
+          <div class="hien_K_pr">
+            <p id="k-pr">Private key: *********</p>
+            <div class="button_show_off">
+              <button onclick="showPrimaryKey()" class="showPr">Hiện</button>
+              <button onclick="anPrimaryKey()" class="anPr">Ẩn</button>
+              <div class="note_show_off">
+                <p>Lưu ý: Không áp dụng đối với trường hợp Random Key</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="Part_2">
@@ -86,12 +95,12 @@
         </div>
         <div class="div_button gama_xicma_button">
           <div class="xg">
-            <button onclick="gama_xicma()">Gama và Xicma</button>
+            <button onclick="gama_xicma()">Gama và Deta</button>
           </div>
         </div>
         <div class="gama_xicma">
-          <p id="gama">Gama</p>
-          <p id="xicma">Xicma</p>
+          <p id="gama">Gama: *********</p>
+          <p id="xicma">Deta: *********</p>
         </div>
       </div>
       <div class="Part_3">

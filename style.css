@@ -21,7 +21,7 @@ body {
   background-color: aqua;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 2rem;
+  border-radius: 1rem;
   margin-top: 3rem;
   box-shadow: -26px 22px 17px 7px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: -26px 22px 17px 7px rgba(0, 0, 0, 0.75);
@@ -171,6 +171,53 @@ button:active {
 .xg,
 .ani_check_sig {
   width: 18rem;
+}
+.hien_K_pr {
+  display: flex;
+  gap: 3rem;
+}
+.button_show_off {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+/* .button_show_off:hover .note_show_off {
+  display: flex;
+} */
+.note_show_off {
+  /* height: max-content; */
+  width: 50rem;
+  background-color: #fff;
+  color: rgb(39, 0, 145);
+  opacity: 70%;
+  border-radius: 2rem;
+  position: absolute;
+  top: 3.5rem;
+  left: -4rem;
+  display: none;
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+  animation: ani_show_off 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes ani_show_off {
+  from {
+    transform: translateY(-1rem);
+  }
+  to {
+    transform: translateY(0rem);
+  }
+}
+.showPr,
+.anPr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 2.5rem;
+  font-size: 1.3rem;
 }
 @media (max-width: 550px) {
   html {

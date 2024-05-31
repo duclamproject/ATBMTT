@@ -1,5 +1,4 @@
-// BÌNH PHƯƠNG VÀ NHÂN
-
+// ĐỔI SANG NHỊ PHÂN
 function chuyenNhiPhan(num) {
   let arr = [];
   let tmp = 0;
@@ -10,6 +9,8 @@ function chuyenNhiPhan(num) {
   }
   return arr;
 }
+
+// BÌNH PHƯƠNG VÀ NHÂN
 function tinhBeta(sP, a, alpha) {
   let arr_a = chuyenNhiPhan(a);
   let p = 1;
@@ -26,39 +27,16 @@ function tinhBeta(sP, a, alpha) {
   }
   return p;
 }
-function result() {
-  const soP = parseInt(document.querySelector("#so-p").value);
-  const soA = parseInt(document.querySelector("#so-a").value);
-  const soAlpha = parseInt(document.querySelector("#so-alpha").value);
-  if (isNaN(soA) || isNaN(soP) || isNaN(soAlpha)) {
-    alert("Vui lòng nhập đủ thông tin p, a, alpha!");
-    return;
+function checkSNT(x) {
+  for (let i = 2; i < x; i++) {
+    if (x % i === 0) {
+      return 0;
+    }
   }
-  let gTriBeta = tinhBeta(soP, soA, soAlpha);
-  document.querySelector("#beta").innerHTML = "Beta: " + gTriBeta;
-  document.querySelector("#k-pub").innerHTML =
-    "Public key = { " + soP + ", " + soAlpha + ", " + gTriBeta + " }";
-  document.querySelector("#k-pr").innerHTML = "Private key = { " + soA + " }";
+  return 1;
 }
-// RANDOM KEY
-function randomKey() {
-  const soP = Math.floor(Math.random() * 10000000);
-  let soA = Math.floor(Math.random() * (soP - 2));
-  if (soA < 2) {
-    soA = soA + 2;
-  }
-  let soAlpha = Math.floor(Math.random() * soP);
-  if (soAlpha == 0) {
-    soAlpha = soAlpha + 1;
-  }
-  let gTriBeta = tinhBeta(soP, soA, soAlpha);
-  document.querySelector("#beta").innerHTML = "Beta: " + gTriBeta;
-  document.querySelector("#k-pub").innerHTML =
-    "Public key = { " + soP + ", " + soAlpha + ", " + gTriBeta + " }";
-  document.querySelector("#k-pr").innerHTML = "Private key = { " + soA + " }";
-}
-// EUCLIDE MỞ RỘNG:
 
+// EUCLIDE MỞ RỘNG:
 function oClit(k, p) {
   let ri = p;
   let rin = k;
@@ -82,7 +60,90 @@ function oClit(k, p) {
   return tin;
 }
 
-// TÍNH GAMA _ XICMA
+// BETA, PUBLIC KEY, PRIMARY KEY
+function result() {
+  const soP = parseInt(document.querySelector("#so-p").value);
+  const soA = parseInt(document.querySelector("#so-a").value);
+  const soAlpha = parseInt(document.querySelector("#so-alpha").value);
+  if (isNaN(soA) || isNaN(soP) || isNaN(soAlpha)) {
+    alert("Vui lòng nhập đủ thông tin p, a, alpha!");
+    return;
+  }
+  if (checkSNT(soP) == false) {
+    document.querySelector("#so-p").value = NaN;
+    document.querySelector("#so-a").value = NaN;
+    document.querySelector("#so-alpha").value = NaN;
+    alert("Nhập lại số p( p là số nguyên tố)!)");
+    document.querySelector("#beta").innerHTML = "Beta: *********";
+    document.querySelector("#k-pub").innerHTML = "Public key: *********";
+    document.querySelector("#k-pr").innerHTML = "Private key: *********";
+  }
+  let gTriBeta = tinhBeta(soP, soA, soAlpha);
+  document.querySelector("#beta").innerHTML = "Beta: " + gTriBeta;
+  document.querySelector("#k-pub").innerHTML =
+    "Public key = { " + soP + ", " + soAlpha + ", " + gTriBeta + " }";
+  document.querySelector("#k-pr").innerHTML = "Private key = { ********* }";
+}
+//HIỂN THỊ PRIMARY KEY
+function showPrimaryKey() {
+  const soP = parseInt(document.querySelector("#so-p").value);
+  const soA = parseInt(document.querySelector("#so-a").value);
+  const soAlpha = parseInt(document.querySelector("#so-alpha").value);
+  if (isNaN(soA) || isNaN(soP) || isNaN(soAlpha)) {
+    alert("Vui lòng nhập đủ thông tin p, a, alpha!");
+    return;
+  }
+  document.querySelector("#k-pr").innerHTML = "Primary key = { " + soA + " }";
+}
+// ẨN PRIMARY KEY
+function anPrimaryKey() {
+  const soP = parseInt(document.querySelector("#so-p").value);
+  const soA = parseInt(document.querySelector("#so-a").value);
+  const soAlpha = parseInt(document.querySelector("#so-alpha").value);
+  if (isNaN(soA) || isNaN(soP) || isNaN(soAlpha)) {
+    alert("Vui lòng nhập đủ thông tin p, a, alpha!");
+    return;
+  }
+  document.querySelector("#k-pr").innerHTML = "Private key = { ********* }";
+}
+
+// RANDOM KEY
+
+function randomKey() {
+  // RANDOM đến khi thỏa mãn P là số nguyên tố
+  const soP = document.querySelector("#so-p").value;
+  let soP_ky_rd = Math.floor(Math.random() * 10000000);
+  while (!checkSNT(soP_ky_rd)) {
+    soP_ky_rd = Math.floor(Math.random() * 10000000);
+  }
+  let soA_ky_rd = Math.floor(Math.random() * (soP_ky_rd - 2));
+  if (soA_ky_rd < 2) {
+    soA_ky_rd = soA_ky_rd + 2;
+  }
+  let soAlpha_ky_rd = Math.floor(Math.random() * soP_ky_rd);
+  if (soAlpha_ky_rd == 0) {
+    soAlpha_ky_rd = soAlpha_ky_rd + 1;
+  }
+
+  let gTriBeta = tinhBeta(soP_ky_rd, soA_ky_rd, soAlpha_ky_rd);
+  document.querySelector("#beta").innerHTML = "Beta: " + gTriBeta;
+  document.querySelector("#k-pub").innerHTML =
+    "Public key = { " +
+    soP_ky_rd +
+    ", " +
+    soAlpha_ky_rd +
+    ", " +
+    gTriBeta +
+    " }";
+  document.querySelector("#k-pr").innerHTML =
+    "Private key = { " + soA_ky_rd + " }";
+  document.querySelector("#so-p").value = soP_ky_rd;
+  document.querySelector("#so-a").value = soA_ky_rd;
+  document.querySelector("#so-alpha").value = soAlpha_ky_rd;
+}
+// const btnRamdom = document.querySelector("#ramdom");
+document.querySelector("#ramdom").addEventListener("click", randomKey);
+// TÍNH GAMA - Deta
 function gama_xicma() {
   const soAlpha_ky = parseInt(document.querySelector("#so-alpha").value);
   const soK_ky = parseInt(document.querySelector("#so-k").value);
@@ -93,9 +154,15 @@ function gama_xicma() {
     alert("Vui lòng nhập đầy thông tin x và k!");
     return;
   }
+  // Gama
   let gTriGama = tinhBeta(soP_ky, soK_ky, soAlpha_ky);
+  if (isNaN(gTriGama)) {
+    alert("Còn thiếu thông tin của p, a, alpha!");
+
+    return;
+  }
   document.querySelector("#gama").innerHTML = "Gama: " + gTriGama;
-  //Xicma
+  //Deta
   let gTriXicma_turn_1 = Number(soX_ky - soA_ky * gTriGama);
   console.log(gTriXicma_turn_1);
   let gTriXicma_turn_2 = oClit(soK_ky, soP_ky - 1);
@@ -106,7 +173,11 @@ function gama_xicma() {
   if (gTriXicma < 0) {
     gTriXicma = gTriXicma + (soP_ky - 1);
   }
-  document.querySelector("#xicma").innerHTML = "Xicma: " + gTriXicma;
+  if (isNaN(gTriXicma)) {
+    alert("Còn thiếu thông tin của p, a, alpha!");
+    return;
+  }
+  document.querySelector("#xicma").innerHTML = "Deta: " + gTriXicma;
 }
 // Kiểm tra
 function kiemTraChuKy() {
